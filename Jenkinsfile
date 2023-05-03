@@ -37,18 +37,29 @@ pipeline{
             
     //   }
         
-        stage("Scale MongoDB"){
+        stage("Packer install"){
             steps{
-                    script {
+                //     script {
 
-                    sh'''#!/bin/bash 
-                                    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo -y apt-key add -
-                                    sudo -y apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-                                    sudo -y apt-get update && sudo -y apt-get install packer
-                                '''
-                    }
+                //     sh'''#!/bin/bash 
+                //                     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo -y apt-key add -
+                //                     sudo -y apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+                //                     sudo -y apt-get update && sudo -y apt-get install packer
+                //                 '''
+                //     }
                     
-                }
+                // }
+                // stage("Scale MongoDB"){
+                    sh "consul-template -template \"Dockerfile.tmpl:Dockerfile\" -once" 
+                    // def dockerimage = docker.build("mongo-scaling-image")
+                    // dockerimage.inside{
+                    //     sh '''
+                    //    atlas config set public_api_key ${PUBLIC_KEY}
+                    //     atlas config set private_api_key ${PRIVATE_KEY}
+                    //     atlas cluster update ${cluster_name}  --projectId ${project_id}  --tier ${cluster_size}
+                    //     '''
+                    // }
+                // }
         }
         
     }
