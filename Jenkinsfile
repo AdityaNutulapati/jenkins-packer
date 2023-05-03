@@ -32,15 +32,19 @@ pipeline{
         // }
             // }
         // }
-        stage("Scale MongoDB"){
-            steps{
-                    sh "consul-template -template \"Dockerfile.tmpl:Dockerfile\" -once" 
-                    def dockerimage = docker.build("mongo-scaling-image")
+        stage("Dummy")
+        {
+            def dockerimage = docker.build("dummy-image")
                     dockerimage.inside{
                         sh '''
                         echo "hello world"
                         '''
                     }
+        }
+        stage("Scale MongoDB"){
+            steps{
+                    sh "consul-template -template \"Dockerfile.tmpl:Dockerfile\" -once" 
+                    
                 }
         }
         
