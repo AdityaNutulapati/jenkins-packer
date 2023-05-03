@@ -58,7 +58,7 @@ pipeline{
                     secretKeyVariable:'AWS_SECRET_ACCESS_KEY']])
                     {
                         // sh "/opt/homebrew/bin/brew install docker"
-                        sh "/opt/homebrew/bin/packer build -var='aws_key=$AWS_ACCESS_KEY_ID' -var='aws_secret=$AWS_SECRET_ACCESS_KEY' test-1.pkr.hcl"
+                        sh "/opt/homebrew/bin/packer build test-1.pkr.hcl -var='aws_key=$AWS_ACCESS_KEY_ID' -var='aws_secret=$AWS_SECRET_ACCESS_KEY'"
                         // sh "TEST=`pwd`"
                         // sh "sed -i '' 's/'BUCKET_NAME'/$bucketName/' `pwd`'/QA/S3/Variables/'$file_name'.tfvars'"
                         // sh "sed -i '' 's/'TICKET_NUMBER'/$ticket_number/' `pwd`'/QA/S3/Variables/'$file_name'.tfvars'"
