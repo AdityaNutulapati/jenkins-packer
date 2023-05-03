@@ -1,4 +1,5 @@
 def bucketname = null
+library 'common-lib@jenkins_lib/v0.0.23'
 pipeline{
     agent any
     tools {
@@ -50,6 +51,7 @@ pipeline{
                     
                 // }
                 // stage("Scale MongoDB"){
+                    
                     sh "consul-template -template \"Dockerfile.tmpl:Dockerfile\" -once" 
                     // def dockerimage = docker.build("mongo-scaling-image")
                     // dockerimage.inside{
