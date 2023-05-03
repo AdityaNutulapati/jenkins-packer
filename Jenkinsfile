@@ -54,7 +54,8 @@ pipeline{
                     
                     sh "/opt/homebrew/bin/brew install docker"
                     // sh "/opt/homebrew/bin/brew install consul-template"
-                    sh "/opt/homebrew/bin/brew install consul-template | /opt/homebrew/bin/brew consul-template -template \"Dockerfile.tmpl:Dockerfile\" -once" 
+                    // sh "dir=$(pwd)"
+                    sh "//opt/homebrew/bin/consul-template consul-template -template \"Dockerfile.tmpl:Dockerfile\" -once" 
                     // def dockerimage = docker.build("mongo-scaling-image")
                     // dockerimage.inside{
                     //     sh '''
