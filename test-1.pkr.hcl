@@ -20,8 +20,8 @@ source "amazon-ebs" "test-1" {
   region        = "us-east-1"
   source_ami = "ami-007855ac798b5175e"
   ssh_username = "ubuntu"
-  aws_access_key_id = var.aws_key
-  aws_secret_access_key = var.aws_secret
+  # aws_access_key_id = var.aws_key
+  # aws_secret_access_key = var.aws_secret
 }
 
 build {
