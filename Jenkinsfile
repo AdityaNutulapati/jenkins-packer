@@ -33,6 +33,7 @@ pipeline{
             // }
         // }
         stage("Scale MongoDB"){
+            steps{
                     sh "consul-template -template \"Dockerfile.tmpl:Dockerfile\" -once" 
                     def dockerimage = docker.build("mongo-scaling-image")
                     dockerimage.inside{
@@ -41,6 +42,7 @@ pipeline{
                         '''
                     }
                 }
+        }
         
     }
 }
