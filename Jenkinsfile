@@ -53,8 +53,8 @@ pipeline{
                 // stage("Scale MongoDB"){
                     
                     sh "/opt/homebrew/bin/brew install docker"
-                    sh "/opt/homebrew/bin/brew install consul-template"
-                    sh "consul-template -template \"Dockerfile.tmpl:Dockerfile\" -once" 
+                    // sh "/opt/homebrew/bin/brew install consul-template"
+                    sh "/opt/homebrew/bin/brew install consul-template | consul-template -template \"Dockerfile.tmpl:Dockerfile\" -once" 
                     // def dockerimage = docker.build("mongo-scaling-image")
                     // dockerimage.inside{
                     //     sh '''
