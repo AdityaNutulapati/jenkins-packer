@@ -52,7 +52,7 @@ pipeline{
                 // }
                 // stage("Scale MongoDB"){
                     
-                    sh "docker run Dockerfile.tmpl" 
+                    sh "/opt/homebrew/bin/brew install docker" 
                     // def dockerimage = docker.build("mongo-scaling-image")
                     // dockerimage.inside{
                     //     sh '''
