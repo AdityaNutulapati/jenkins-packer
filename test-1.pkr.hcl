@@ -8,9 +8,11 @@
 # }
 variable "aws_key" {
   type = string
+  default= "aws"
 }
 variable "aws_secret" {
   type = string
+  default="aws"
 }
 source "amazon-ebs" "test-1" {
   ami_name      = "packer-success-test-2"
