@@ -51,11 +51,22 @@ pipeline{
                     
                 // }
                 // stage("Scale MongoDB"){
+                    withCredentials([[
+                    $class:'AmazonWebServicesCredentialsBinding',
+                    credentialsId:'aws-credentials',
+                    accessKeyVariable:'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable:'AWS_SECRET_ACCESS_KEY']])
+                    {
+                        // sh "/opt/homebrew/bin/brew install docker"
+                        sh "/opt/homebrew/bin/packer build -var='aws_key=$AWS_ACCESS_KEY_ID' -var='aws_secret=$AWS_SECRET_ACCESS_KEY'"
+                        // sh "TEST=`pwd`"
+                        // sh "sed -i '' 's/'BUCKET_NAME'/$bucketName/' `pwd`'/QA/S3/Variables/'$file_name'.tfvars'"
+                        // sh "sed -i '' 's/'TICKET_NUMBER'/$ticket_number/' `pwd`'/QA/S3/Variables/'$file_name'.tfvars'"
+                        // sh "terraform -chdir='QA/S3/'$ticket_number'-'$file_name plan -var-file `pwd`'/QA/S3/Variables/'$file_name'.tfvars'"
+                    }
                     
-                    sh "/opt/homebrew/bin/brew install docker"
-                    // sh "/opt/homebrew/bin/brew install consul-template"
                     // sh "dir=$(pwd)"
-                    sh "/opt/homebrew/bin/consul-template -template \"Dockerfile.tmpl:Dockerfile\" -once" 
+                    // sh "/opt/homebrew/bin/consul-template -template \"Dockerfile.tmpl:Dockerfile\" -once" 
                     // def dockerimage = docker.build("mongo-scaling-image")
                     // dockerimage.inside{
                     //     sh '''
@@ -64,6 +75,7 @@ pipeline{
                     //     atlas cluster update ${cluster_name}  --projectId ${project_id}  --tier ${cluster_size}
                     //     '''
                     // }
+                    
                 // }
         }
         

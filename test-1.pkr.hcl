@@ -6,14 +6,20 @@
 #     }
 #   }
 # }
-
+variable "aws_key" {
+  type = string
+}
+variable "aws_secret" {
+  type = string
+}
 source "amazon-ebs" "test-1" {
   ami_name      = "packer-success-test-2"
   instance_type = "t2.micro"
   region        = "us-east-1"
   source_ami = "ami-007855ac798b5175e"
   ssh_username = "ubuntu"
-  profile = "jenkins-packer"
+  aws_access_key_id = var.aws_key
+  aws_secret = var.aws_secret
 }
 
 build {
