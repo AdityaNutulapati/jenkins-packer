@@ -32,9 +32,9 @@ build {
   provisioner "shell" {
 
     inline=[
-    "echo 'sample scripts working' " ,
-    "sudo update -y" ,
-    "sudo install -y git"
+    "echo 'sample scripts working' "
+    # "sudo update -y" ,
+    # "sudo install -y git"
     ]
 
     }   
