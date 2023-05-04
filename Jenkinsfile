@@ -60,7 +60,7 @@ pipeline{
                         // sh "/opt/homebrew/bin/brew install docker"
                         // -chdir='QA/'$ticket_number'/'
                         // -var-file=`pwd`'/QA/variables/'$ticket_number'.pkrvars.hcl'
-                        sh "/opt/homebrew/bin/packer -chdir='QA/'$ticket_number'/' build -var-file=`pwd`'/QA/variables/'$ticket_number'.pkrvars.hcl'"
+                        sh "/opt/homebrew/bin/packer build -chdir='QA/'$ticket_number'/' -var-file=`pwd`'/QA/variables/'$ticket_number'.pkrvars.hcl'"
                         // sh "TEST=`pwd`"
                         // sh "sed -i '' 's/'BUCKET_NAME'/$bucketName/' `pwd`'/QA/S3/Variables/'$file_name'.tfvars'"
                         // sh "sed -i '' 's/'TICKET_NUMBER'/$ticket_number/' `pwd`'/QA/S3/Variables/'$file_name'.tfvars'"
