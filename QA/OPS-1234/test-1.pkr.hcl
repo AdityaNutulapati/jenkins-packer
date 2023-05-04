@@ -15,7 +15,7 @@
 #   default="aws"
 # }
 source "amazon-ebs" "test-1" {
-  ami_name      = "packer-success-test-2"
+  ami_name      = var.ami-name
   instance_type = "t2.micro"
   region        = "us-east-1"
   source_ami = var.source-ami
