@@ -31,11 +31,12 @@ build {
   ]
   provisioner "shell" {
 
-    inline=[
-    "echo 'sample scripts working' "
-    # "sudo update -y" ,
-    # "sudo install -y git"
-    ]
+    # inline=[
+    # "echo 'sample scripts working' "
+    # # "sudo update -y" ,
+    # # "sudo install -y git"
+    # ]
+    script = "script.sh"
 
     }   
   
