@@ -37,7 +37,12 @@ pipeline{
     //     {
             
     //   }
-        
+        stage("Packer init")
+        {
+            steps{
+                sh "/opt/homebrew/bin/packer init -chdir 'QA/'$ticket_number'/'"
+            }
+        }
         stage("Packer install"){
             steps{
                 //     script {
