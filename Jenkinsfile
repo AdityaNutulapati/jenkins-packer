@@ -67,7 +67,7 @@ pipeline{
                         // -var-file=`pwd`'/QA/variables/'$ticket_number'.pkrvars.hcl'
                         dir("QA/$ticket_number/")
                         {
-                            sh "/opt/homebrew/bin/packer build -var-file='../variables/'$ticket_number'.pkrvars.hcl'"
+                            sh "/opt/homebrew/bin/packer build -var-file='QA/variables/'$ticket_number'.pkrvars.hcl'"
                         }
                         
                         // sh "TEST=`pwd`"
