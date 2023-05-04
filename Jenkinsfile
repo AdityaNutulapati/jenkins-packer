@@ -56,6 +56,7 @@ pipeline{
                     // -var='aws_key=$AWS_ACCESS_KEY_ID' -var='aws_secret=$AWS_SECRET_ACCESS_KEY'
                 // }
                 // stage("Scale MongoDB"){
+                  
                     withCredentials([[
                     $class:'AmazonWebServicesCredentialsBinding',
                     credentialsId:'aws-credentials',
@@ -65,9 +66,25 @@ pipeline{
                         // sh "/opt/homebrew/bin/brew install docker"
                         // -chdir='QA/'$ticket_number'/'
                         // -var-file=`pwd`'/QA/variables/'$ticket_number'.pkrvars.hcl'
+                        // sh "TEST=`pwd`"
+                        // sh "echo TEST"
+                        echo "../../pwd"
                         dir("QA/$ticket_number/")
                         {
-                            sh "/opt/homebrew/bin/packer build -var-file='QA/variables/'$ticket_number'.pkrvars.hcl'"
+                            sh "ls .."
+                            // sh "/opt/homebrew/bin/packer build -var-file='../variables/'$ticket_number'.pkrvars.hcl'"
+                            sh '''
+                            if [ -f "../variables/OPS-1234.pkrvars.hcl" ] 
+                                    then
+                                        echo "Directory /path/to/dir exists." 
+                                    else
+                                        echo "Error: Directory /path/to/dir does not exists."
+                                    fi
+                            '''
+                            // '../variables/'$ticket_number'.pkrvars.hcl'
+                            // -var-file='abc'
+                            sh "/opt/homebrew/bin/packer init ."
+                            sh "/opt/homebrew/bin/packer build . -var-file=''$ticket_number'.pkrvars.hcl'"
                         }
                         
                         // sh "TEST=`pwd`"
