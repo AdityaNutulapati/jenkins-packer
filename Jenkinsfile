@@ -84,7 +84,7 @@ pipeline{
                             // '../variables/'$ticket_number'.pkrvars.hcl'
                             // -var-file='abc'
                             sh "/opt/homebrew/bin/packer init ."
-                            sh "/opt/homebrew/bin/packer build . -var-file='OPS-1234.pkrvars.hcl'"
+                            sh "/opt/homebrew/bin/packer build -var-file='OPS-1234.pkrvars.hcl' ."
                         }
                         
                         // sh "TEST=`pwd`"
