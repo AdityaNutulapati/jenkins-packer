@@ -5,11 +5,11 @@ pipeline{
     tools {
         terraform 'terraform-11'
     }
-//     parameters {
-//       string description: 'Name of the S3 Bucket', name: 'bucketName'
-//       string description: 'OPS Ticket Number Eg: OPS-11913', name: 'ticket_number'
-//       string description: 'Variable file name (without .tfvars extension)', name: 'file_name'
-// }
+    parameters {
+    //   string description: 'Name of the S3 Bucket', name: 'bucketName'
+      string description: 'OPS Ticket Number Eg: OPS-11913', name: 'ticket_number'
+    //   string description: 'Variable file name (without .tfvars extension)', name: 'file_name'
+}
 
     // }
     stages {
@@ -58,7 +58,7 @@ pipeline{
                     secretKeyVariable:'AWS_SECRET_ACCESS_KEY']])
                     {
                         // sh "/opt/homebrew/bin/brew install docker"
-                        sh "/opt/homebrew/bin/packer build ."
+                        sh "/opt/homebrew/bin/packer -chdir='QA/'$ticket_number'/ build . -var-file=`pwd`'/QA/variables/'$ticket_number.pkrvars.hcl'"
                         // sh "TEST=`pwd`"
                         // sh "sed -i '' 's/'BUCKET_NAME'/$bucketName/' `pwd`'/QA/S3/Variables/'$file_name'.tfvars'"
                         // sh "sed -i '' 's/'TICKET_NUMBER'/$ticket_number/' `pwd`'/QA/S3/Variables/'$file_name'.tfvars'"

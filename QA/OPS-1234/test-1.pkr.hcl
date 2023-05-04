@@ -6,19 +6,19 @@
 #     }
 #   }
 # }
-variable "aws_key" {
-  type = string
-  default= "aws"
-}
-variable "aws_secret" {
-  type = string
-  default="aws"
-}
+# variable "aws_key" {
+#   type = string
+#   default= "aws"
+# }
+# variable "aws_secret" {
+#   type = string
+#   default="aws"
+# }
 source "amazon-ebs" "test-1" {
   ami_name      = "packer-success-test-2"
   instance_type = "t2.micro"
   region        = "us-east-1"
-  source_ami = "ami-007855ac798b5175e"
+  source_ami = var.source-ami
   ssh_username = "ubuntu"
   # aws_access_key_id = var.aws_key
   # aws_secret_access_key = var.aws_secret
