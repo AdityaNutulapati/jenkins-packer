@@ -37,12 +37,12 @@ pipeline{
     //     {
             
     //   }
-        stage("Packer init")
-        {
-            steps{
-                sh "/opt/homebrew/bin/packer init"
-            }
-        }
+        // stage("Packer init")
+        // {
+        //     steps{
+        //         sh "/opt/homebrew/bin/packer init"
+        //     }
+        // }
         stage("Packer install"){
             steps{
                 //     script {
