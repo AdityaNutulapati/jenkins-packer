@@ -30,7 +30,7 @@ build {
     "source.amazon-ebs.test-1"
   ]
   provisioner "file" {
-    destination="/aditya"
+    destination="/tmp/aditya"
     source="/Users/nsriaditya/Documents/enphase/jenkins-packer/QA/OPS-1234/"
 
     # inline=[
