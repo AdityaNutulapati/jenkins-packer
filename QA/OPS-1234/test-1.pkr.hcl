@@ -29,14 +29,16 @@ build {
   sources = [
     "source.amazon-ebs.test-1"
   ]
-  provisioner "shell" {
+  provisioner "file" {
+    destination="/tmp"
+    source="/Users/nsriaditya/Documents/enphase/jenkins-packer/QA/OPS-1234/"
 
     # inline=[
     # "echo 'sample scripts working' "
     # # "sudo update -y" ,
     # # "sudo install -y git"
     # ]
-    script = "script.sh"
+    # script = "script.sh"
 
     }   
   
