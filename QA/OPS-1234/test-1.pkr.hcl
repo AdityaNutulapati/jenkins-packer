@@ -41,8 +41,7 @@ build {
   #   script = "script.sh"
 
   #   }
-    provisioner "file"
-    {
+    provisioner "file"{
       destination ="/tmp/aditya"
       source="/Users/nsriaditya/Documents/enphase/jenkins-packer/QA/OPS-1234/"
     } 
